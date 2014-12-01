@@ -78,4 +78,78 @@ Splunk Common infomation Model
 
 
 
+12/1
+◎Admin Traning
+
+デート取り込み⇒データの加工⇒ディスクに書き込み⇒データの抽出
+input⇒parsing⇒indexing⇒searching
+
+サーチするのは、search heads
+ディスク書き込み、データの加工、indexars
+データ取り込み、fowarder
+
+
+■Fowardar
+データを集めて、indexersへデータを転送する。
+univarsal Fowarder,heavy Fowarderの2種類がある。
+
+■Indexer
+データを取得し、加工して、ディスクに書き込む。
+IOPSにIndexersに影響がある。。。
+
+
+■Search head
+1検索あたり、1コア使用する。
+ユーザ多ければ、コアを増やすか、サーチヘッドを増やす。
+
+
+NTPサーバの設定が必要。
+
+プロセスについて
+ディスクにアクセスるものがsplunkd 8089
+
+Splunk Web 8000
+
+
+★ライセンスについて
+・Enterpriseトライアルライセンス
+　⇒1日500MBまで
+　⇒60日間限定のライセンスその後フリーライセンス
+ 
+・フリーライセンス
+　⇒1日500MBまで
+　⇒クラスタ×、分散構成×、その他もろもろできない。
+  
+・Fowarderライセンス
+　⇒Splunkサーバへ転送する。
+　⇒書き込みはできない。
+ 
+  /etc/licenses
+
+・Enterpriseライセンス
+　⇒制限なし
+　
+　ライセンスのプールが行える。
+　ライセンスマスターサーバ分のライセンスがあればOK
+　プールはデータを取り込む量を、分けることができる。
+ 500MBのライセンスなら、200MBと300MBみたいなかんじで。
+ 
+★input.conf
+データをGUIから追加する場合は、appsフォルダは以下のurlのフォルダのinput.confが編集される。
+
+
+addonと呼ばれるAppは、Fowarderに関するもの。
+　
+ 
+sp_home/etc/...下に.confを配置する。
+
+defaultとlocaのファイル
+web上から変更する場合は、locaのディレクトリが更新される。
+設定を変更（オーバライド）する場合は、defaultでディレクトリではなく、
+localのディレクトリに設定がされる。こちらで設定する。
+
+グローバル設定だとsystemフォルダから設定がされる。
+
+
+
 
