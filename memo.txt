@@ -152,5 +152,46 @@ localのディレクトリに設定がされる。こちらで設定する。
 
 
 
+12/2
+★Forwarder
+forwarderでは、splunktcp port転送します。
+データのバーファーができます。
+LBの機能もあります。
+forwarder managementで集中管理できます。
+
+★heavy forwarder
+indexerへデータを連携する場合にルーティングを設定できる。
+中間Fowarderとしての役目がある。
+このデータは、このindexerみたいなデータを条件に設定できる。
+
+
+indexerのinput.conf(recevingの設定をする)
+↑
+fwのoutput.conf,input.confを設定する。
+
+
+圧縮転送する場合は、
+compressed = trueを追加設定する。
+input.conf(indexer側)
+output.conf(fowarder側)
+CPUに影響が多少はある。
+
+SSLで転送する場合は。
+圧縮時と同じファイルをなおす。
+
+
+★indexer Acknowledgement
+inderxerの取り込み確認ができるまで、
+データを保持できる。
+
+
+fowarderの配信
+複数サーバがある場合いちいちやってられないので、
+そのやり方。
+
+サーバクラスを定義できる。
+
+inputs.confを編集することで、
+取り込むログのフィールドをある程度設定できる。
 
 
