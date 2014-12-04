@@ -266,6 +266,53 @@ deleteは、adminでもできない。
 can_deleteユーザ
 
 
+12/4
+ユーザとロール
+ユーザの検索対象の時間などの設定ができる。
+
+
+LDAPと連携させることでロールを割り当てできる。
+
+
+パーシング
+メタデータ⇒イベント⇒イベント（分解）
+
+★props.confの設定について
+・Line breaking
+props.confへ以下の記述をすると、
+一行一イベントとする。
+SHOUD_LINEMARGE = false(デフォルト)
+falseにする。
+
+複数行の場合は、trueにする。
+BREAK_ONLY_BEFORE_DATE=true(デフォルト)
+
+・timestamp extraction
+時間のタイムスタンプの設定
+TIME_PREFIXどのデータを取得するか定義
+
+TIME_FORMATで時間のフォーマットを定義
+
+MAX_TIMESTAMP_LOOKAHEADで定義すると
+PREFIXから何行目まで取得するか定義できる。
+
+TZでタイムゾーンを設定
+
+
+props.conf⇒transforms.conf
+マスクが行える。
+
+取り込むときにデータを除外できる。
+
+_rawのデータがライセンス対象になる。
+
+
+冗長化するとdupのライセンスがかかる。
+クラスタにしたほうがいい。
+
+リモートインストール
+
+
 
 
 
